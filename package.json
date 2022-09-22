@@ -1,0 +1,25 @@
+{
+  "name": "gulp-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kouichi-hoshi@github.com/kouichi-hoshi/gulp-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kouichi-hoshi/gulp-dev/issues"
+  },
+  "homepage": "https://github.com/kouichi-hoshi/gulp-dev#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.55.0"
+  }
+}
