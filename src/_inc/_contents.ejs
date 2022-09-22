@@ -1,0 +1,99 @@
+<div id="wrapper">
+  <main id="main" class="main">
+    <div class="contents-body">
+      <ul class="bread pc">
+        <li>
+          <a href="<%= baseUrl %>/index.html" class="item">TOP</a>
+        </li>
+        <li><a href="<%= baseUrl %>/<%= page['category'] %>/" class="item"><%= page['category'] %></a></li>
+        <li>
+          <span class="item"><%= page['title'] %></span>
+        </li>
+      </ul>
+      <div class="wrap-head">
+        <div class="img anm-right js-scroll">
+          <img src="<%= baseUrl %>/img/item/<%= page['category'] %>/<%= page['id'] %>/main.jpg" alt="" />
+        </div>
+        <div class="inner">
+          <div class="box anm-up js-scroll">
+            <ul class="bread sp">
+              <li>
+                <a href="<%= baseUrl %>/index.html" class="item">TOP</a>
+              </li>
+              <li>
+                <a href="<%= page['category'] %>" class="item"><%= page['category'] %></a>
+              </li>
+              <li>
+                <span class="item"><%= page['title'] %></span>
+              </li>
+            </ul>
+            <h1 class="box-ttl js-anm"><%= page['title'] %></h1>
+            <p class="box-price">
+              <span class="price">&yen;<%= page['price'] %></span><span class="tax">（税込）</span>
+            </p>
+            <p class="box-txt"><%= page['itemAbout'] %></p>
+            <ul class="box-list">
+              <li>
+                <a href="" class="detail-btn">
+                  <span class="txt">購入する</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- wrap-head -->
+      <div class="wrap-main">
+        <div class="item-product anm-up js-scroll">
+          <div class="product-inner">
+            <h2 class="product-ttl">商品詳細</h2>
+            <div class="inn-max">
+              <ul class="product-list">
+                <li class="item">
+                  <div class="list-img">
+                    <img src="<%= baseUrl %>/img/item/<%= page['category'] %>/<%= page['id'] %>/product01.jpg" alt="" />
+                  </div>
+                  <p class="list-txt"><%= page['itemInfo'] %></p>
+                </li>
+                <!-- item -->
+              </ul>
+            </div>
+            <% if( page['hasInfo']) { %>
+            <div class="product-info"><%- page['productInfo'] %></div>
+            <% } %>
+          </div>
+        </div>
+        <!-- item-product -->
+        <div class="item-detail">
+          <ul class="item-detail-inner">
+            <li class="anm-up js-scroll">
+              <div class="detail-img">
+                <img src="<%= baseUrl %>/img/item/<%= page['category'] %>/<%= page['id'] %>/scene01.jpg" alt="" />
+              </div>
+              <div class="detail-body">
+                <h2 class="detail-ttl js-anm"><%= page['itemTtl01'] %></h2>
+                <p class="detail-txt"><%= page['itemCont01'] %></p>
+              </div>
+            </li>
+            <!-- li -->
+            <li class="anm-up js-scroll">
+              <div class="detail-img">
+                <img src="<%= baseUrl %>/img/item/<%= page['category'] %>/<%= page['id'] %>/scene02.jpg" alt="" />
+              </div>
+              <div class="detail-body">
+                <h2 class="detail-ttl js-anm"><%= page['itemTtl02'] %></h2>
+                <p class="detail-txt"><%= page['itemCont02'] %></p>
+              </div>
+            </li>
+            <!-- li -->
+          </ul>
+        </div>
+        <!-- item-detail -->
+      </div>
+      <!-- wrap-main -->
+    </div>
+    <!-- contents-body -->
+  </main>
+  <%- include('../_inc/_footer.ejs', { baseUrl: baseUrl }) %>
+</div>
+<!-- /wrapper -->
