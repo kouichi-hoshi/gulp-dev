@@ -1,46 +1,16 @@
-// gulpプラグインを読み込みます
-const { src, dest, watch } = require('gulp')
-// Sassをコンパイルするプラグインを読み込みます
-const sass = require('gulp-sass')(require('sass'))
-
+const gulp = require('gulp')
+const { src, dest, watch } = require('gulp') // gulpプラグインを読み込みます
+const sass = require('gulp-sass')(require('sass')) // Sassをコンパイルするプラグインを読み込みます
 const ejs = require('gulp-ejs') //EJS
 const rename = require('gulp-rename') //ファイル出力時にファイル名を変える
-const postcss = require('gulp-postcss') //生成されたcssを操作する
-const autoprefixer = require('autoprefixer') //自動でベンダープレフィックスを付与
+const autoprefixer = require('gulp-autoprefixer')
 const plumber = require('gulp-plumber') //エラーによるタスクの強制停止を防止
 const notify = require('gulp-notify') //デスクトップ通知
 const browserSync = require('browser-sync').create() //変更を即座にブラウザへ反映
 const fs = require('fs') //JSONファイル操作用
 const del = require('del') //データ削除用
 
-// /**
-//  * Sassをコンパイルするタスクです
-//  */
-// const compileSass = () =>
-//   // style.scssファイルを取得
-//   src('css/style.scss')
-//     // Sassのコンパイルを実行
-//     .pipe(
-//       // コンパイル後のCSSを展開
-//       sass({
-//         outputStyle: 'expanded'
-//       })
-//     )
-//     // cssフォルダー以下に保存
-//     .pipe(dest('css'))
-
-// /**
-//  * Sassファイルを監視し、変更があったらSassを変換します
-//  */
-// const watchSassFiles = () => watch('css/style.scss', compileSass)
-
-// // npx gulpというコマンドを実行した時、watchSassFilesが実行されるようにします
-// exports.default = watchSassFiles
-
-/**
- *
- */
-
+/* path */
 const srcBase = './src'
 const distBase = './dist'
 
@@ -77,14 +47,8 @@ const cssSass = () => {
         errorHandler: notify.onError('Error:<%= error.message %>')
       })
     )
-    .pipe(
-      postcss([
-        autoprefixer({
-          browsers: ['last 2 versions', 'iOS >= 12', 'Android >= 8']
-        })
-      ])
-    )
     .pipe(sass({ outputStyle: 'expanded' }))
+    .pipe(autoprefixer()) //prefix
     .pipe(gulp.dest(distPath.css)) //コンパイル先
     .pipe(browserSync.stream())
     .pipe(
