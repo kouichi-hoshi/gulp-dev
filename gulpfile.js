@@ -27,7 +27,7 @@ const distPath = {
   html: distBase + '/**/*.html',
   img: distBase + '/img',
   js: distBase + '/js',
-  item: distBase + '/item'
+  ejs: distBase + '/'
 }
 
 /* clean */
@@ -67,13 +67,8 @@ const ejsFunc = () => {
   return gulp
     .src([srcPath.ejs, srcPath._ejs])
     .pipe(ejs({ json: json }))
-    .pipe(
-      rename({
-        basename: 'index', //ファイル名
-        extname: '.html' //拡張子
-      })
-    )
-    .pipe(gulp.dest(distPath.item))
+    .pipe(rename({ extname: '.html' }))
+    .pipe(gulp.dest(distPath.ejs))
 }
 
 /* image */

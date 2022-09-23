@@ -12,3 +12,7 @@ $fontColor: #525252;
 h1 {
   color: $fontColor;
 }
+
+li + li {
+  margin-top: 1rem;
+}

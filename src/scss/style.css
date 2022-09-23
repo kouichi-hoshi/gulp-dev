@@ -6,3 +6,7 @@ div p {
 h1 {
   color: #525252;
 }
+
+a {
+  display: block;
+}
