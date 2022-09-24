@@ -1,5 +1,4 @@
 const gulp = require('gulp')
-const { src, dest, watch } = require('gulp') // gulpプラグインを読み込みます
 const sass = require('gulp-sass')(require('sass')) // Sassをコンパイルするプラグインを読み込みます
 const ejs = require('gulp-ejs') //EJS
 const rename = require('gulp-rename') //ファイル出力時にファイル名を変える
@@ -9,6 +8,14 @@ const notify = require('gulp-notify') //デスクトップ通知
 const browserSync = require('browser-sync').create() //変更を即座にブラウザへ反映
 const fs = require('fs') //JSONファイル操作用
 const del = require('del') //データ削除用
+
+const debug = require('gulp-debug') // ログ表示
+const path = require('path')
+const named = require('vinyl-named')
+const filter = require('gulp-filter') // ファイルフィルター
+const webpack = require('webpack')
+const webpackStream = require('webpack-stream')
+const webpackConfig = require('./webpack.config.js')
 
 /* path */
 const srcBase = './src'
@@ -76,9 +83,30 @@ const imgFunc = () => {
   return gulp.src(srcPath.img).pipe(gulp.dest(distPath.img))
 }
 
-/* js */
+// /* js */
 const jsFunc = () => {
-  return gulp.src(srcPath.js).pipe(gulp.dest(distPath.js))
+  return gulp
+    .src(srcPath.js)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError('Error: <%= error.message %>')
+      })
+    )
+    .pipe(
+      filter(function (file) {
+        // _から始まるファイルを除外
+        return !/\/_/.test(file.path) && !/^_/.test(file.relative)
+      })
+    )
+    .pipe(
+      named((file) => {
+        const p = path.parse(file.relative)
+        return (p.dir ? p.dir + path.sep : '') + p.name
+      })
+    )
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe(gulp.dest(distPath.js))
+    .pipe(debug({ title: 'js dest:' }))
 }
 
 /* ローカルサーバー立ち上げ */
