@@ -60,7 +60,7 @@ const cssSass = () => {
     .pipe(browserSync.stream())
     .pipe(
       notify({
-        message: 'Sassをコンパイルしました！',
+        message: 'Sassをコンパイルしました',
         onLast: true
       })
     )
@@ -68,12 +68,9 @@ const cssSass = () => {
 
 /* EJS */
 const ejsFunc = () => {
-  var jsonFile = srcBase + '/data/pages.json',
-    json = JSON.parse(fs.readFileSync(jsonFile, 'utf8'))
-
   return gulp
     .src([srcPath.ejs, srcPath._ejs])
-    .pipe(ejs({ json: json }))
+    .pipe(ejs({ ext: '.html' }))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest(distPath.ejs))
 }
