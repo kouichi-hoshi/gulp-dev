@@ -2,7 +2,6 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass')) // Sassをコンパイルするプラグインを読み込みます
 const ejs = require('gulp-ejs') //EJS
 const rename = require('gulp-rename') //ファイル出力時にファイル名を変える
-// const autoprefixer = require('gulp-autoprefixer')
 const plumber = require('gulp-plumber') //エラーによるタスクの強制停止を防止
 const notify = require('gulp-notify') //デスクトップ通知
 const browserSync = require('browser-sync').create() //変更を即座にブラウザへ反映
