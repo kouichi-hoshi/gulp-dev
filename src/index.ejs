@@ -1,48 +1,55 @@
-<% var data = {title:'hoge',description:'fuga'}; %>
+<% const metaData = {title:'home', description:'home page'}; %>
 
 <!DOCTYPE html>
 <html lang="ja">
-  <%- include('_inc/_head', {page:data,baseUrl:''}) %>
+  <%- include('_inc/_head', {data:metaData,baseUrl:''}) %>
   <body>
-    <h1>index</h1>
-    <ul>
-      <li>
-        <a href="https://qiita.com/y_hokkey/items/31f1daa6cecb5f4ea4c9" target="_blank">
-          テンプレートエンジンEJSで使える便利な構文まとめ - Qiita
-        </a>
-      </li>
-      <li>
-        <a href="https://b-risk.jp/blog/2022/01/gulp-ejs-json/#3_npm" target="_blank">
-          gulp+EJS+JSONで大量のHTMLを効率的に生成する – 東京のホームページ制作 / WEB制作会社 BRISK
-        </a>
-      </li>
-      <li>
-        <a href="https://ics.media/entry/3290/" target="_blank">
-          絶対つまずかないGulp 4入門(2022年版) - インストールとSassを使うまでの手順 - ICS MEDIA
-        </a>
-      </li>
-      <li>
-        <a href="https://shu-sait.com/gulp-ejs-html-compile/#outline__5" target="_blank">
-          GulpでEJSからHTMLにコンパイルできるようにする
-        </a>
-      </li>
-      <li>
-        <a href="https://note.com/tak_dcxi/n/n209d230e9ad7" target="_blank">
-          僕がおすすめするVSCodeのプラグインまとめ｜TAK / Web Creator.｜note
-        </a>
-      </li>
-      <li>
-        <a href="https://liginc.co.jp/206518/2" target="_blank">
-          Gulp.jsとPostCSSを使ってCSSの面倒な作業をなくそう | Page 2 of 2 |
-          株式会社LIG(リグ)｜コンサルティング・システム開発・Web制作
-        </a>
-      </li>
-      <li>
-        <a href="https://devsakaso.com/gulp-autoprefixer/" target="_blank">
-          GULPでautoprefixerを使う方法（エラーの対応方法） | devsakaso
-        </a>
-      </li>
-    </ul>
+    <%- include('_inc/_header', {data:metaData}) %>
+    <main>
+      <article>
+        <section>
+          <h1>gulp+EJS環境 構築資料</h1>
+          <ul>
+            <li>
+              <a href="https://qiita.com/y_hokkey/items/31f1daa6cecb5f4ea4c9" target="_blank">
+                テンプレートエンジンEJSで使える便利な構文まとめ - Qiita
+              </a>
+            </li>
+            <li>
+              <a href="https://b-risk.jp/blog/2022/01/gulp-ejs-json/#3_npm" target="_blank">
+                gulp+EJS+JSONで大量のHTMLを効率的に生成する – 東京のホームページ制作 / WEB制作会社 BRISK
+              </a>
+            </li>
+            <li>
+              <a href="https://ics.media/entry/3290/" target="_blank">
+                絶対つまずかないGulp 4入門(2022年版) - インストールとSassを使うまでの手順 - ICS MEDIA
+              </a>
+            </li>
+            <li>
+              <a href="https://shu-sait.com/gulp-ejs-html-compile/#outline__5" target="_blank">
+                GulpでEJSからHTMLにコンパイルできるようにする
+              </a>
+            </li>
+            <li>
+              <a href="https://note.com/tak_dcxi/n/n209d230e9ad7" target="_blank">
+                僕がおすすめするVSCodeのプラグインまとめ｜TAK / Web Creator.｜note
+              </a>
+            </li>
+            <li>
+              <a href="https://liginc.co.jp/206518/2" target="_blank">
+                Gulp.jsとPostCSSを使ってCSSの面倒な作業をなくそう | Page 2 of 2 |
+                株式会社LIG(リグ)｜コンサルティング・システム開発・Web制作
+              </a>
+            </li>
+            <li>
+              <a href="https://devsakaso.com/gulp-autoprefixer/" target="_blank">
+                GULPでautoprefixerを使う方法（エラーの対応方法） | devsakaso
+              </a>
+            </li>
+          </ul>
+        </section>
+      <article>
+    <main>
     <%- include('_inc/_bodyEnd') %>
   </body>
 </html>

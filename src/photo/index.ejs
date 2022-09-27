@@ -1,0 +1,22 @@
+<% const metaData = {title:'photo', description:'photo page'}; %>
+
+<!DOCTYPE html>
+<html lang="ja">
+  <%- include('../_inc/_head', {data:metaData, baseUrl:''}) %>
+  <body>
+    <%- include('../_inc/_header', {data:metaData}) %>
+    <main>
+      <article>
+        <section>
+          <h1>画像サンプル</h1>
+          <p>
+            <% var ary = ['001.jpg', '002.jpg', '003.jpg']; %> <% ary.forEach(function (value, key) { %>
+            <img class="photo-<%= key + 1 %>" src="/img/sample/<%= value %>" alt="写真<%= key + 1 %>" />
+            <% }); %>
+          </p>
+        </section>
+      </article>
+    </main>
+    <%- include('../_inc/_bodyEnd') %>
+  </body>
+</html>
