@@ -1,0 +1,10 @@
+@use 'mediaQueries' as m;
+
+@mixin header($fontSize: 2.25rem, $lineHeigh: 2.5rem, $fontSizeM: 3.75rem, $lineHeighM: 1) {
+  font-size: $fontSize;
+  line-height: $lineHeigh;
+  @include m.mq-md {
+    font-size: $fontSizeM;
+    line-height: $lineHeighM;
+  }
+}

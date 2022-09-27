@@ -1,0 +1,44 @@
+@use '../global' as g;
+
+.u-maxWidthSm {
+  max-width: g.$screenSm !important;
+}
+
+.u-maxWidthMd {
+  max-width: g.$screenMd !important;
+}
+
+.u-maxWidthLg {
+  max-width: g.$screenLg !important;
+}
+
+.u-maxWidthXl {
+  max-width: g.$screenXl !important;
+}
+
+.u-maxWidth90P {
+  max-width: 90% !important;
+}
+
+.u-fixed {
+  position: fixed !important;
+}
+
+.u-li-style-reset {
+  margin: 0 !important;
+  &::before {
+    content: none !important;
+  }
+}
+
+.u-opa-0 {
+  opacity: 0;
+}
+
+.u-pointer-none {
+  pointer-events: none;
+}
+
+// .u-line-color-blue {
+//   stroke: map-get(g.$theme-base-colors, 'subColor');
+// }

@@ -1,0 +1,29 @@
+@use '../setting' as s;
+
+/**
+ * Media Queries
+ */
+// BreakPoint sm
+@mixin mq-sm {
+  @media (min-width: s.$screenSm) {
+    @content;
+  }
+}
+// BreakPoint md
+@mixin mq-md {
+  @media (min-width: s.$screenMd) {
+    @content;
+  }
+}
+// BreakPoint lg
+@mixin mq-lg {
+  @media (min-width: s.$screenLg) {
+    @content;
+  }
+}
+// BreakPoint xl
+@mixin mq-xl {
+  @media (min-width: s.$screenXl) {
+    @content;
+  }
+}

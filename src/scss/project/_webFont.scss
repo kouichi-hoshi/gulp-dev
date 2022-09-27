@@ -1,0 +1,31 @@
+@use '../global' as g;
+
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+// .noto-sans-jp {
+//   font-family: 'Noto Sans JP', sans-serif;
+// }
+
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap');
+// .noto-serif-jp {
+//   font-family: 'Noto Serif JP', serif;
+// }
+
+// @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+// .bungee {
+//   font-family: g.$bungee;
+// }
+
+// @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;800&display=swap');
+// .dosis {
+//   font-family: g.$dosis;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
+.josefin {
+  font-family: g.$josefinSans;
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;800&display=swap');
+// .m-plus-rounded-1c {
+//   font-family: g.$mPlusRounded1c;
+// }

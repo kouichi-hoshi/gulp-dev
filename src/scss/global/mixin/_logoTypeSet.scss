@@ -1,0 +1,7 @@
+/**
+ * Logo Type
+ */
+@mixin logoTypeSet($ff, $fw: normal) {
+  font-family: $ff;
+  font-weight: $fw;
+}

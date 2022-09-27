@@ -1,0 +1,122 @@
+@use '../global' as g;
+
+.p-default-font-family-en {
+  font-family: g.$defaultFontFamilyEn;
+}
+
+// セクショニングコンテンツ間のスペースを統一するためのスタイル
+.p-space {
+  padding: 0 2rem;
+  margin-bottom: 4rem;
+}
+
+// blogなど文章が続く箇所のためのスタイル
+.p-hentry {
+  p,
+  ul,
+  dl,
+  hr {
+    line-height: 2rem;
+    margin-bottom: 1.6rem;
+  }
+  & *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p-footer {
+  background: g.$cLightGray;
+}
+
+.p-navigation-menu {
+  & + & {
+    border-top: 1px solid #fff;
+    @include g.mq-md {
+      border: none;
+    }
+  }
+}
+
+.p-top-return-btn {
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+  z-index: 20;
+  transform-origin: right bottom;
+  @include g.buttonCircle($pad: 10px);
+  animation: footer-up 0.4s ease forwards;
+  @keyframes footer-up {
+    0% {
+      transform: translateY(-3rem);
+    }
+    100% {
+      transform: translateY(3rem);
+    }
+  }
+  &.is-active {
+    animation: footer-down 0.4s ease forwards;
+    @keyframes footer-down {
+      0% {
+        transform: translateY(3rem);
+      }
+      100% {
+        transform: translateY(-3rem);
+      }
+    }
+  }
+}
+
+// TODO: 以下 リファクタリング対象
+
+.p-column-layout--wide {
+  @include g.mq-md {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem 2rem;
+    margin-bottom: 3rem;
+  }
+  @include g.mq-lg {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8rem 2rem;
+  }
+  @include g.mq-xl {
+    gap: 12rem 4rem;
+  }
+}
+
+.p-column-layout-narrow {
+  grid-template-columns: repeat(auto-fill, max(14rem));
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  @include g.mq-md {
+    grid-template-columns: repeat(auto-fill, max(13rem));
+  }
+  @include g.mq-lg {
+    grid-template-columns: repeat(auto-fill, max(17rem));
+  }
+}
+
+// ページ遷移時にフェード
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+.card {
+  @include g.card();
+}
+
+.hamburger-button-style {
+  &.active {
+    color: g.$cWhite;
+  }
+}
+
+.modal-nav {
+  color: g.$cWhite;
+}

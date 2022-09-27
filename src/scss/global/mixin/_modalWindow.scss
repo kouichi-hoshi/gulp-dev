@@ -1,0 +1,7 @@
+@use '../setting' as s;
+@use 'mediaQueries' as m;
+
+@mixin modalWindow($bg: s.$cDarkBlack, $color: s.$cWhite) {
+  background: rgba($bg, 0.5);
+  color: $color;
+}

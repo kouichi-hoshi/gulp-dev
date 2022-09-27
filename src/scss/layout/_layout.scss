@@ -1,0 +1,20 @@
+@use '../global' as g;
+
+// コンテンツが少量の場合でも下部に固定する
+html,
+body,
+.l-container {
+  height: 100%;
+}
+
+.l-header {
+  margin-bottom: 2rem;
+  @include g.mq-md {
+    margin-bottom: 4rem;
+  }
+}
+
+.l-footer {
+  position: sticky;
+  top: 100vh;
+}

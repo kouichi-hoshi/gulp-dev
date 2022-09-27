@@ -1,0 +1,10 @@
+// @use '../setting' as g;
+
+@mixin banner($border: 1px solid black, $padding: 1rem, $display: block) {
+  border: $border;
+  width: fit-content;
+  &__inner {
+    padding: $padding;
+    display: $display;
+  }
+}

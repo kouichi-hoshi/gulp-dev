@@ -1,0 +1,9 @@
+/**
+ * card
+ */
+@use '../setting' as g;
+
+@mixin card($pad: 2rem, $width: 1px, $color: g.$cDarkGray) {
+  padding: $pad;
+  border: $width solid $color;
+}

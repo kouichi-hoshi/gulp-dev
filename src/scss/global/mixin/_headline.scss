@@ -1,0 +1,6 @@
+@use 'mediaQueries' as m;
+
+@mixin c-headline($fs: clamp(1.5rem, 3.2vw, 1.75rem)) {
+  width: fit-content;
+  font-size: $fs;
+}

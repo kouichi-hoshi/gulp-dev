@@ -1,0 +1,24 @@
+@use '../setting' as g;
+@use 'mediaQueries' as m;
+
+// 見出しのサブタイトル用スタイル
+@mixin dataTitle(
+  $position: after,
+  $ff: inherit,
+  $fontSize: 2.25rem,
+  $lineHeigh: 2.5rem,
+  $fontSizeM: 3.75rem,
+  $lineHeighM: 1
+) {
+  &[data-title]::#{$position} {
+    content: attr(data-title);
+    display: block;
+    font-family: $ff;
+    font-size: $fontSize;
+    line-height: $lineHeigh;
+    @include m.mq-md {
+      font-size: $fontSizeM;
+      line-height: $lineHeighM;
+    }
+  }
+}

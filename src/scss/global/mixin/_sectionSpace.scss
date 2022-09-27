@@ -1,0 +1,16 @@
+@use 'mediaQueries' as m;
+
+@mixin sectionSpace($mt: 0, $mb: 0, $pad: 2rem 1rem 2rem 1rem, $padSm: 4rem 1rem, $padMd: 8rem 0, $padLg: 12rem 0) {
+  margin-top: $mt;
+  margin-bottom: $mb;
+  padding: $pad;
+  @include m.mq-sm {
+    padding: $padSm;
+  }
+  @include m.mq-md {
+    padding: $padMd;
+  }
+  @include m.mq-lg {
+    padding: $padLg;
+  }
+}

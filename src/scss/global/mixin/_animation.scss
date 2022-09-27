@@ -1,0 +1,146 @@
+
+/**
+ * 上下左右に移動させることを想定したスタイル
+ * 対象DOM要素が画面内に表示されたときに適用する
+ * 例：
+ * 1.IntersectionObserverで検知させる（別途実装で実現）
+ * 2.is-activeクラスを脱着
+ */
+@mixin translate($name, $duration:0.6s, $delay:0.4s, $from: #{0, 1rem}, $to: #{0, 0rem}) {
+  animation: $name $duration $delay ease-out forwards;
+  @keyframes #{$name} {
+    0% {
+      opacity: 0;
+      transform: translate($from);
+    }
+    100% {
+      opacity: 1;
+      transform: translate($to);
+    }
+  }
+}
+
+@mixin scrollTransform($direction: X, $translate: -2rem, $speed: 0.4s) {
+  transition: transform $speed, opacity $speed;
+  opacity: 0;
+  transform: translate#{$direction }($translate);
+  &.active {
+    transform: translate#{$direction }(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * IntersectionObserverで検知したhtml要素に対して使用する場合、
+ * 対象の要素にCSSの初期値をつける（opacity: 0; transform: translateY(5rem) など）
+ */
+
+@mixin fadeLift($duration: 0.6s, $delay: 0s, $opaFrom: 0, $opaTo: 1, $yFrom: 5rem, $yTo: 0) {
+  animation: fadeLift $duration $delay ease-out forwards;
+  @keyframes fadeLift {
+    0% {
+      opacity: $opaFrom;
+      transform: translateY($yFrom);
+    }
+    100% {
+      transform: translateY($yTo);
+      opacity: $opaTo;
+    }
+  }
+}
+
+/**
+ * IntersectionObserverで検知したhtml要素に対して使用する場合、
+ * 対象の要素にCSSの初期値をつける（opacity: 0; transform: translateX(-1rem) など）
+ */
+@mixin fadeSlide($duration: 0.6s, $delay: 0s, $xFrom: -1rem, $xTo: 0) {
+  animation: fadeLSlide $duration $delay ease-out forwards;
+  @keyframes fadeLSlide {
+    0% {
+      opacity: 0;
+      transform: translateX($xFrom);
+    }
+    100% {
+      transform: translateX($xTo);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin fadeOut() {
+  animation: fadeOut 0.2s ease-in forwards;
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin mask($maskType: 'mask-1', $delay: 0s) {
+  object-fit: cover;
+  max-width: 100%;
+  &.active {
+    transition-duration: 0.6s;
+    transition-delay: $delay;
+    transition-timing-function: ease-in-out;
+  }
+  @if $maskType == 'mask-1' {
+    clip-path: inset(0 100% 0 0);
+    &.active {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @if $maskType == 'mask-2' {
+    clip-path: inset(0 0 0 100%);
+    &.active {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @if $maskType == 'mask-3' {
+    clip-path: inset(50% 0 50% 0);
+    &.active {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @if $maskType == 'mask-4' {
+    clip-path: circle(0.5% at center);
+    &.active {
+      clip-path: circle(100% at center);
+    }
+  }
+
+  @if $maskType == 'mask-5' {
+    clip-path: inset(0 0 100% 0);
+    &.active {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+@mixin fade($fade: fade, $from: 0, $to: 1) {
+  @keyframes #{$fade} {
+    0% {
+      opacity: $from;
+    }
+    100% {
+      opacity: $to;
+    }
+  }
+}
+
+@mixin slide($name: slide, $from: -100%, $to: 0) {
+  @keyframes #{$name} {
+    0% {
+      transform: translateX($from);
+    }
+    100% {
+      transform: translateX($to);
+    }
+  }
+}
