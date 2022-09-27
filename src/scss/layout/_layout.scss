@@ -7,13 +7,6 @@ body,
   height: 100%;
 }
 
-.l-header {
-  margin-bottom: 2rem;
-  @include g.mq-md {
-    margin-bottom: 4rem;
-  }
-}
-
 .l-footer {
   position: sticky;
   top: 100vh;

@@ -2,13 +2,13 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass')) // Sassをコンパイルするプラグインを読み込みます
 const ejs = require('gulp-ejs') //EJS
 const rename = require('gulp-rename') //ファイル出力時にファイル名を変える
-const autoprefixer = require('gulp-autoprefixer')
+// const autoprefixer = require('gulp-autoprefixer')
 const plumber = require('gulp-plumber') //エラーによるタスクの強制停止を防止
 const notify = require('gulp-notify') //デスクトップ通知
 const browserSync = require('browser-sync').create() //変更を即座にブラウザへ反映
 const fs = require('fs') //JSONファイル操作用
 const del = require('del') //データ削除用
-
+const postcss = require('gulp-postcss')
 const debug = require('gulp-debug') // ログ表示
 const path = require('path')
 const named = require('vinyl-named')
@@ -22,6 +22,7 @@ const srcBase = './src'
 const distBase = './dist'
 
 const srcPath = {
+  css: srcBase + '/css/**/*.css',
   scss: srcBase + '/scss/**/*.scss',
   img: srcBase + '/img/**/*',
   js: srcBase + '/js/**/*.js',
@@ -55,7 +56,7 @@ const cssSass = () => {
       })
     )
     .pipe(sass({ outputStyle: 'expanded' }))
-    .pipe(autoprefixer()) //prefix
+    .pipe(postcss([require('tailwindcss'), require('autoprefixer')]))
     .pipe(gulp.dest(distPath.css)) //コンパイル先
     .pipe(browserSync.stream())
     .pipe(
@@ -125,7 +126,7 @@ const browserSyncReload = (done) => {
 const watchFiles = () => {
   gulp.watch(srcPath.scss, gulp.series(cssSass))
   gulp.watch(srcPath.img, gulp.series(imgFunc, browserSyncReload))
-  gulp.watch(srcPath.ejs, gulp.series(ejsFunc, browserSyncReload))
+  gulp.watch(srcPath.ejs, gulp.series(ejsFunc, cssSass, browserSyncReload))
   gulp.watch(srcPath.js, gulp.series(jsFunc, browserSyncReload))
 }
 
